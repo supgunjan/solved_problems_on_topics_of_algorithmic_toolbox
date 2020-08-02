@@ -1,22 +1,21 @@
 //https://leetcode.com/problems/climbing-stairs/
 
-
 class Solution {
 public:
-  
-    
-    int helper(int n,vector<int> &v)
-    {
-        if(n <= 2) return n;
-        v[1] = 1;
-        v[2] = 2;
-        
-        if(v[n] != -1) return v[n];
-        return v[n] = helper(n-1,v)+helper(n-2,v);
-    }
+ 
     int climbStairs(int n) {
-          vector<int> v(46,-1);
-      
-     return helper(n,v);        
+        if(n == 1) return 1;
+        if(n == 2) return 2;
+        int dp[46];
+        
+        dp[1] = 1;
+        dp[2] = 2;
+        
+        for(int i = 3 ; i <= n ; i++)
+        {
+            dp[i] = dp[i-1]+dp[i-2];
+        }
+        return dp[n];
+        
     }
 };
